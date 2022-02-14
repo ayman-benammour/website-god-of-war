@@ -7,6 +7,7 @@ module.exports = {
     entry: path.resolve(__dirname, '../src/script.js'),
     output:
     {
+        hashFunction: 'xxhash64',
         filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, '../dist')
     },
@@ -57,7 +58,7 @@ module.exports = {
                 ]
             },
 
-            // Stylus
+            // STYLUS
             {
                 test: /\.styl$/,
                 use:
@@ -86,17 +87,6 @@ module.exports = {
                 {
                     filename: 'assets/fonts/[hash][ext]'
                 }
-            },
-
-            // Shaders
-            {
-                test: /\.(glsl|vs|fs|vert|frag)$/,
-                exclude: /node_modules/,
-                use:
-                [
-                    'raw-loader',
-                    'glslify-loader'
-                ]
             }
         ]
     }
