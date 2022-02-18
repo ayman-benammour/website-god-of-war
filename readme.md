@@ -1,4 +1,4 @@
-# Template
+# God of War Ragnarok
 
 - [GitHub](https://github.com/ayman-benammour/template-webpack)
 - [Live](https://website-god-of-war.vercel.app)
