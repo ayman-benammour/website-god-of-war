@@ -92,6 +92,16 @@ module.exports = {
                 ]
             },
 
+            // SOUND
+            {
+                test: /\.mp3$/,
+                type: 'asset/resource',
+                generator:
+                {
+                    filename: 'assets/sounds/[hash][ext]'
+                }
+            },
+
             // Images
             {
                 test: /\.(jpg|png|gif|svg)$/,

@@ -1,7 +1,7 @@
 # Template
 
 - [GitHub](https://github.com/ayman-benammour/template-webpack)
-- [Live]
+- [Live](https://website-god-of-war.vercel.app)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
