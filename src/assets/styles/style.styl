@@ -1,2 +1,182 @@
+@font-face
+{
+    font-family 'Baron'
+    src url(../fonts/baron/baronBold.woff2) format('woff2'),
+        url(../fonts/baron/baronBold.woff) format('woff')
+    font-weight 700
+    font-style normal
+}
+
 body
-    background red
+    font-family 'Baron'
+
+.h-70vh
+    height 70vh
+
+.centered
+{
+    width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track
+{
+    background: #424242;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: #686868;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background: #7b7b7b; 
+}
+
+/* 
+ Articles
+ */
+.articles
+{
+    border-bottom: 2px solid #e4e2e0;
+}
+
+.articles .article
+{
+    display: flex;
+    padding: 50px 0;
+}
+
+.articles .article:nth-child(even)
+{
+    flex-direction: row-reverse;
+}
+
+
+.articles .article .text
+{
+    padding: 55px;
+}
+
+.articles .article .text .block-title
+{
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.articles .article .text p
+{
+    padding-bottom: 55px;
+    line-height: 26px;
+}
+
+.block-title
+{
+    margin-bottom: 52px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.video
+    width 585px
+    height 400px
+
+.experienceLoad
+    position absolute
+    display flex
+    justify-content center
+    align-items center
+    font-size 50px
+    width 100vw
+    height 100vh
+    color #ffffff
+    background-color #000000
+    z-index 1
+
+.isNotLoaded
+    opacity 1
+    transition opacity 1s ease-in
+
+.isLoaded
+    opacity 0
+    transition opacity 1s ease-in
+
+.hidden
+    display none
+
+.button
+    position absolute
+    display flex
+    justify-content center
+    align-items center
+    width 50px
+    height 50px
+    border solid #000000
+    background #ffffff
+    margin 10px
+    font-size 20px
+    transition background 0.1s ease, color 0.1s ease
+
+.buttonHome
+    bottom 25px
+    left 25px
+    transition transform 0.3s ease
+
+.buttonHome:hover
+    transform translateY(-10px)
+    transition transform 0.3s ease
+
+.keys
+    position absolute
+    width 310px
+    height 130px
+    bottom 25px
+    right 25px
+
+.key
+    position absolute
+    display flex
+    justify-content center
+    align-items center
+    width 50px
+    height 50px
+    border solid #000000
+    background #ffffff
+    margin 10px
+    font-size 20px
+    transition background 0.1s ease, color 0.1s ease
+
+.keyActive
+    background-color #131313
+    color #ffffff
+    transition background 0.1s ease, color 0.1s ease
+
+.keyZ
+    left 180px
+
+.keyQ
+    top 60px
+    left 120px
+
+.keyS
+    top 60px
+    left 180px
+
+.keyD
+    top 60px
+    left 240px
+
+.keyControl
+    top 60px
+    width 110px
+
+.keyShift
+    width 110px

@@ -4,19 +4,124 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template WebPack</title>
-    <!-- Favicon -->
+    <title>God of War Ragnarok - Home</title>
+    <!-- FAVICON -->
     <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon/favicon-16x16.png">
     <link rel="manifest" href="../static/favicon/site.webmanifest">
     <link rel="mask-icon" href="../static/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="../static/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#9f00a7">
+    <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="../static/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-    <div class="yo">Salut !</div>
+<body class="bg-neutral-900 text-white">
+
+    <!-- HEADER -->
+    <nav class="flex items-center justify-between flex-wrap text-sm px-20 py-5">
+
+        <!-- LOGO -->
+        <div class="flex items-center flex-shrink-0 mr-6">
+            <img src="./assets/images/god-of-war-ragnarok-logo.png">
+        </div>
+
+        <!-- TEXT -->
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+
+            <!-- NAVBAR -->
+            <div class=" flex-grow uppercase">
+                <a href="./index.html" class="transition ease-in-out duration-200 inline-block px-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">Kratos</a>
+                <a href="#" class="transition ease-in-out duration-200 inline-block px-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">Leviathan Axe</a>
+                <a href="#" class="transition ease-in-out duration-200 inline-block px-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">Mimir</a>
+                <a href="#" class="transition ease-in-out duration-200 inline-block px-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">Troll</a>
+            </div>
+
+            <!-- ABOUT -->
+            <div>
+                <a href="./about.html" class="transition ease-in-out duration-200 inline-block uppercase px-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">About</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- EXPERIENCE WEBGL -->
+    <div class="flex justify-center items-center relative bg-white w-full h-96 my-10">
+        <img class="absolute w-full h-full object-cover" src="./assets/images/background-experience.jpg">
+        <a href="./experience.html" class="z-10 transition ease-in-out duration-200 inline-block px-4 uppercase pt-2 pb-3 text-4xl hover:text-black hover:bg-white mt-0">Launch immersive experience</a>
+    </div>
+
+    <!-- ARTICLES -->
+    <section class="articles">
+        <div class="centered">
+
+            <!-- Article -->
+            <article class="article">
+
+                <!-- Video -->
+                <video class="video" src="./assets/videos/intro.mp4" width="580" height="400" autoplay muted loop></video>
+
+                <!-- Text -->
+                <div class="text">
+                    <h3 class="block-title uppercase">Those who break fate</h3>
+                    <p>Atreus seeks knowledge to help him understand the prophecy of “Loki” and what role he is to play in Ragnarök. Kratos must decide whether he will be chained by the fear of repeating his mistakes or break free of his past to be the father Atreus needs. </p>
+                </div>
+
+            </article>
+
+            <!-- Article -->
+            <article class="article">
+
+                <!-- Video -->
+                <video class="video" src="./assets/videos/fight.mp4" width="580" height="400" autoplay muted loop></video>
+
+                <!-- Text -->
+                <div class="text">
+                    <h3 class="block-title uppercase">Weapons of war</h3>
+                    <p>The Leviathan Axe, Blades of Chaos and Guardian Shield return alongside a host of new abilities for both Kratos and Atreus. As they take on gods and monsters from across the Nine Realms, Kratos’ deadly Spartan skills will be tested like never before as he fights to protect his family.</p>
+                </div>
+
+            </article>
+
+            <!-- Article -->
+            <article class="article">
+
+                <!-- Video -->
+                <video class="video" src="./assets/videos/exploration.mp4" autoplay muted loop></video>
+
+                <!-- Text -->
+                <div class="text">
+                    <h3 class="block-title uppercase">Explore the realms</h3>
+                    <p>Journey to dangerous and stunning landscapes while facing a wide variety of enemy creatures, monsters and Norse gods as Kratos and Atreus search for answers and allies.</p>
+                </div>
+
+            </article>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="container mx-auto py-8 border-t border-gray-400">
+    <div class="container flex px-3 py-8 ">
+        <div class="w-full mx-auto flex flex-wrap">
+            <div class="flex w-full lg:w-1/2 ">
+                <div class="px-3 md:px-0">
+                    <p class="py-4">
+                    This website is the student work of <a class="underline" href="https://www.esin-ecole.com">ESIN school</a>. It exists only for educational purposes and the contents remain the property of their respective authors.
+                    </p>
+                </div>
+            </div>
+            <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
+                <div class="flex justify-center items-end flex-col px-3 md:px-0 uppercase">
+                    <a href="./about.html" class="transition ease-in-out duration-200 inline-block px-4 py-4 pt-2 pb-3 hover:text-black hover:bg-white mt-0">About</a>
+                    <h3 class="font-bold py-4">Developed by <a class="underline" href="https://github.com/ayman-benammour">Ayman Benammour</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

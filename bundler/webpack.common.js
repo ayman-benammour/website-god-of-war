@@ -4,7 +4,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/script.js'),
+    entry: path.resolve(__dirname, '../src/index.js'),
     output:
     {
         hashFunction: 'xxhash64',
@@ -20,11 +20,26 @@ module.exports = {
             ]
         }),
         new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html'),
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'about.html',
+            template: path.resolve(__dirname, '../src/about.html'),
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'experience.html',
+            template: path.resolve(__dirname, '../src/experience.html'),
             minify: true
         }),
         new MiniCSSExtractPlugin()
     ],
+    resolve:
+    {
+        extensions: ['.tsx', '.ts', '.js']
+    },
     module:
     {
         rules:
@@ -48,13 +63,21 @@ module.exports = {
                 ]
             },
 
+            // TS
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
+
             // CSS
             {
                 test: /\.css$/,
                 use:
                 [
                     MiniCSSExtractPlugin.loader,
-                    'css-loader'
+                    'css-loader',
+                    'postcss-loader'
                 ]
             },
 
