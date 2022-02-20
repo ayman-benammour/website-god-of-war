@@ -21,20 +21,8 @@ export default class Application
         camera.position.z = 5
         camera.position.x = 0
 
-        //OVERLAY
-        const planeGeometry = new THREE.PlaneGeometry( 2, 2 )
-        const planeMaterial = new THREE.MeshBasicMaterial( 
-        {
-            color: 'black',
-            transparent: true,
-            opacity: 1,
-        })
-        const plane = new THREE.Mesh( planeGeometry, planeMaterial )
-        plane.position.z = -1
-        camera.add( plane )
-
         // RENDERER
-        const renderer = new THREE.WebGLRenderer({ antialias: true })
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" })
         renderer.setSize(window.innerWidth, window.innerHeight)
         renderer.setPixelRatio(window.devicePixelRatio)
         renderer.shadowMap.enabled = true
@@ -52,54 +40,53 @@ export default class Application
         orbitControls.update()
 
         // SKY
-            // Add Sky
-            let sky:any , sun:any
+        let sky:any , sun:any
 
-            sky = new Sky()
-            sky.scale.setScalar( 450000 )
-            scene.add( sky )
+        sky = new Sky()
+        sky.scale.setScalar( 450000 )
+        scene.add( sky )
 
-            sun = new THREE.Vector3()
+        sun = new THREE.Vector3()
 
-            /// GUI
+        /// GUI
+        const effectController =
+        {
+            turbidity: 10,
+            rayleigh: 3,
+            mieCoefficient: 0.005,
+            mieDirectionalG: 0.975,
+            elevation: 0,
+            azimuth: -150,
+            exposure: 0.7
+        }
 
-            const effectController = 
-            {
-                turbidity: 10,
-                rayleigh: 3,
-                mieCoefficient: 0.005,
-                mieDirectionalG: 0.975,
-                elevation: 0,
-                azimuth: -150,
-                exposure: 0.7
-            }
+        function guiChanged() 
+        {
+            const uniforms = sky.material.uniforms
+            uniforms[ 'turbidity' ].value = effectController.turbidity
+            uniforms[ 'rayleigh' ].value = effectController.rayleigh
+            uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient
+            uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG
 
-            function guiChanged() {
+            const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation )
+            const theta = THREE.MathUtils.degToRad( effectController.azimuth )
 
-                const uniforms = sky.material.uniforms
-                uniforms[ 'turbidity' ].value = effectController.turbidity
-                uniforms[ 'rayleigh' ].value = effectController.rayleigh
-                uniforms[ 'mieCoefficient' ].value = effectController.mieCoefficient
-                uniforms[ 'mieDirectionalG' ].value = effectController.mieDirectionalG
+            sun.setFromSphericalCoords( 1, phi, theta )
 
-                const phi = THREE.MathUtils.degToRad( 90 - effectController.elevation )
-                const theta = THREE.MathUtils.degToRad( effectController.azimuth )
+            uniforms[ 'sunPosition' ].value.copy( sun )
+        }
 
-                sun.setFromSphericalCoords( 1, phi, theta )
-
-                uniforms[ 'sunPosition' ].value.copy( sun )
-
-            }
-
-            guiChanged()
+        guiChanged()
 
         // ----- LIGHTS -----
-
         // AMBIENT LIGHT
         scene.add(new THREE.AmbientLight(0xffffff, 0.5))
 
         // DIRECTIONAL LIGHT
+        // const dirLightColor = new THREE.Color( 0xffffff )
+
         const dirLight = new THREE.DirectionalLight(0xffffff, 3)
+
         dirLight.position.set(- 100, 150, - 200)
         dirLight.castShadow = true
         dirLight.shadow.camera.top = 200
@@ -124,7 +111,7 @@ export default class Application
 
         // KRATOS
         let isModelLoaded = false
-        // let action = null
+
         gltfLoader.load('assets/models/KratosDraco.glb',
             (gltf) =>
             {
@@ -163,6 +150,7 @@ export default class Application
             })
 
         let isBridgeLoaded = false
+
         // BRIDGE
         gltfLoader.load('assets/models/bridgeDracoTexturesCompressed.glb',
         (gltf) =>
@@ -292,20 +280,24 @@ export default class Application
 
         // DIRECTIONAL LIGHT
         const dirLightFolder = debug.addFolder('Directional light')
-        dirLightFolder
-        .add(dirLight.position, 'y')
-        .min(-200)
-        .max(200)
-        
-        dirLightFolder
-        .add(dirLight.position, 'x')
-        .min(-200)
-        .max(200)
 
         dirLightFolder
-        .add(dirLight.position, 'z')
-        .min(-200)
-        .max(200)
+            .add(dirLight.position, 'y')
+            .min(-200)
+            .max(200)
+        
+        dirLightFolder
+            .add(dirLight.position, 'x')
+            .min(-200)
+            .max(200)
+
+        dirLightFolder
+            .add(dirLight.color, 'dirLightColor')
+
+        dirLightFolder
+            .add(dirLight.position, 'z')
+            .min(-200)
+            .max(200)
 
         // SKY
         const skyFolder = debug.addFolder('Sky')
