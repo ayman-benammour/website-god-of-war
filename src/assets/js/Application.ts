@@ -292,9 +292,6 @@ export default class Application
             .max(200)
 
         dirLightFolder
-            .add(dirLight.color, 'dirLightColor')
-
-        dirLightFolder
             .add(dirLight.position, 'z')
             .min(-200)
             .max(200)
